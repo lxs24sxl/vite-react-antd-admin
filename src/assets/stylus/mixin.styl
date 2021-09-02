@@ -1,0 +1,15 @@
+flex-center-row(jc = space-between)
+  display flex
+  align-items center
+  justify-content jc
+flex-center-col(jc = space-between)
+  display flex
+  align-items center
+  justify-content jc
+  flex-direction column
+line-clamp(num)
+  overflow hidden
+  text-overflow ellipsis
+  display -webkit-box
+  -webkit-line-clamp num
+  -webkit-box-orient vertical

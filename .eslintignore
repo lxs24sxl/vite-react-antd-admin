@@ -1,0 +1,3 @@
+src/**/*.d.ts
+src/serviceWorker.ts
+vite.config.ts

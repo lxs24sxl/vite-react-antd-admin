@@ -1,0 +1,5 @@
+export const SET_ROUTER_LIST = 'SET_ROUTER_LIST'
+
+export const SET_SESSION_ID = 'SET_SESSION_ID'
+
+export const SET_UESR_INFO = 'SET_UESR_INFO'

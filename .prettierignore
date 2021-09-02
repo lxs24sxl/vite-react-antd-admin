@@ -1,0 +1,17 @@
+**/*.md
+**/*.svg
+**/*.html
+**/test.ts
+**/*.less
+coverage/
+publish/
+schematics/
+site/
+public/
+package.json
+**/template/*
+**/assets/*
+**/types/*
+tsconfig.json
+
+stats.html

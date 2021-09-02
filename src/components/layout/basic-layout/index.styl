@@ -1,0 +1,59 @@
+
+.basic-layout
+  #components-layout-demo-custom-trigger .trigger
+    padding 0 24px
+    font-size 18px
+    line-height 64px
+    cursor pointer
+    transition color 0.3s
+  #components-layout-demo-custom-trigger .trigger:hover
+    color #1890ff
+  #components-layout-demo-custom-trigger .logo
+    height 32px
+    margin 16px
+    background rgba(255, 255, 255, 0.3)
+  .site-layout .site-layout-background
+    background #fff
+  &-right
+    .right-header
+      display flex
+      justify-content space-between
+      align-items center
+      padding 0 16px
+      height 48px
+      line-height 48px
+      .header-left
+        &-icon
+          font-size 18px
+  &-title
+    position relative
+    display flex
+    align-items center
+    padding 16px
+    cursor pointer
+    transition padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)
+    min-height 32px
+    .title-logo
+      display inline-block
+      height 32px
+      vertical-align middle
+    h1
+      display inline-block
+      height 32px
+      margin 0 0 0 12px
+      color #fff
+      font-weight 600
+      font-size 18px
+      line-height 32px
+      vertical-align middle
+      animation pro-layout-title-hide 0.3s
+@keyframes pro-layout-title-hide
+  0%
+    display none
+    opacity 0
+  80%
+    display none
+    opacity 0
+  to
+    display unset
+    opacity 1

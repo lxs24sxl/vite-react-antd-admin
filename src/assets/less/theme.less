@@ -1,0 +1,45 @@
+// 自定义覆盖 =============================================================
+@brand-primary: #4470D9; // 全局主色
+@primary-color: #4470D9;
+// 下面你可以各种写一些覆盖的样式，这里就简单覆盖一个主题色的样式，我们改为绿色
+@ant-prefix: ant;
+
+@layout-body-background: #f0f2f5;
+@heading-color: rgba(0, 0, 0, 0.85);
+
+@text-color-secondary: rgba(0, 0, 0, 0.45);
+@font-size-base: 14px;
+
+// Media queries breakpoints
+// @screen-xs and @screen-xs-min is not used in Grid
+// smallest break point is @screen-md
+@screen-xs: 480px;
+@screen-xs-min: @screen-xs;
+// 👆 Extra small screen / phone
+
+// 👇 Small screen / tablet
+@screen-sm: 576px;
+@screen-sm-min: @screen-sm;
+
+// Medium screen / desktop
+@screen-md: 768px;
+@screen-md-min: @screen-md;
+
+// Large screen / wide desktop
+@screen-lg: 992px;
+@screen-lg-min: @screen-lg;
+
+// Extra large screen / full hd
+@screen-xl: 1200px;
+@screen-xl-min: @screen-xl;
+
+// Extra extra large screen / large desktop
+@screen-xxl: 1600px;
+@screen-xxl-min: @screen-xxl;
+
+// provide a maximum
+@screen-xs-max: (@screen-sm-min - 1px);
+@screen-sm-max: (@screen-md-min - 1px);
+@screen-md-max: (@screen-lg-min - 1px);
+@screen-lg-max: (@screen-xl-min - 1px);
+@screen-xl-max: (@screen-xxl-min - 1px);

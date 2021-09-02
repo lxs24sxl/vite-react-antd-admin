@@ -1,0 +1,20 @@
+// @import '~antd/es/style/themes/default.less';
+@popover-bg: '#fff';
+@shadow-1-down:0 6px 16px -8px rgba(0, 0, 0, 0.08), 0 9px 28px 0 rgba(0, 0, 0, 0.05),
+0 12px 48px 16px rgba(0, 0, 0, 0.03);
+@screen-xs: 480px;
+
+.container > * {
+  background-color: @popover-bg;
+  border-radius: 4px;
+  box-shadow: @shadow-1-down;
+}
+
+@media screen and (max-width: @screen-xs) {
+  .container {
+    width: 100% !important;
+  }
+  .container > * {
+    border-radius: 0 !important;
+  }
+}
