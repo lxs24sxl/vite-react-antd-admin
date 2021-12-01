@@ -1,0 +1,72 @@
+.a-filter {
+  background-color: #fff;
+  background: #fff;
+  &.hasMargin {
+    margin: 24px 24px 16px;
+    padding: 24px 24px 0;
+  }
+
+  :global {
+    .ant-col {
+      display: flex;
+      padding-right: 24px;
+      flex-flow: row wrap;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 24px;
+      &.search {
+        text-align: right;
+      }
+
+    }
+    .ant-picker {
+      width: 100%;
+    }
+  }
+
+  &-col {
+    .filter-label {
+      flex: 0 0 120px;
+      min-width: 120px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-align: right;
+      vertical-align: middle;
+      display: inline-block;
+
+      &::after {
+        content: ":";
+        position: relative;
+        top: -.5px;
+        margin: 0 8px 0 2px;
+      }
+
+      &.hide {
+        display: none;
+      }
+    }
+
+    &.left {
+      .filter-label {
+        flex: 0 0 auto;
+        min-width: auto;
+        text-align: left;
+      }
+    }
+    &.center {
+      .filter-label {
+        text-align: center;
+      }
+    }
+  }
+
+
+
+
+  .filter-control {
+    flex: 1 1;
+    display: inline-block;
+  }
+
+
+}

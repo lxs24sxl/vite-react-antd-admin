@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Route, Redirect, Switch } from 'react-router-dom'
 import { ConnectStateType } from '@/types/store'
 import { RouteType } from '@/types/routes'
+import EmptyLoading from '@/components/layout/empty-loading'
 
 const Error = React.lazy(() => import('@/views/error'))
 
@@ -12,7 +13,7 @@ export const ReactRouter = () => {
   )
 
   return (
-    <Suspense fallback={<div style={{ fontSize: '14px' }}>正在加载中</div>}>
+    <Suspense fallback={<EmptyLoading />}>
       <Switch>
         <Route path="/" exact render={() => <Redirect to="/home" />} />
 

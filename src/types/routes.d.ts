@@ -36,5 +36,5 @@ export interface NormalRouteType {
 }
 
 export interface RouteType extends NormalRouteType {
-  children?: NormalRouteType[]
+  children?: RouteType[]
 }

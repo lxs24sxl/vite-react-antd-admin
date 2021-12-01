@@ -1,12 +1,14 @@
 import { AnyAction } from 'redux'
-import { SET_ROUTER_LIST, SET_SESSION_ID, SET_UESR_INFO} from '@/store/constants/common'
+import { SET_COLLAPSED, SET_RESOURCE_MAP, SET_ROUTER_LIST, SET_SESSION_ID, SET_UESR_INFO} from '@/store/constants/common'
 import { CommonStoreType } from '@/types/store/common'
 
 // 默认值
 const INITIAL_STATE: CommonStoreType = {
   routerList: [],
   sessionId: '',
-  userInfo: {}
+  userInfo: {},
+  resourceMap: {}, // 权限码
+  collapsed: false
 }
 
 export default function (state = INITIAL_STATE, action: AnyAction)  {
@@ -26,6 +28,16 @@ export default function (state = INITIAL_STATE, action: AnyAction)  {
       return {
         ...state,
         userInfo: value
+      }
+    case SET_RESOURCE_MAP:
+      return {
+        ...state,
+        resourceMap: value
+      }
+    case SET_COLLAPSED:
+      return {
+        ...state,
+        collapsed: value
       }
     default:
       return state

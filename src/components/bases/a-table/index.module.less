@@ -1,0 +1,43 @@
+.a-table {
+  &:global {
+    &.ant-card {
+      background-color: #fff;
+      margin: 0;
+      background: #fff;
+      .ant-card-body {
+        padding: 0;
+      }
+    }
+  }
+  &.hasMargin {
+    &:global {
+      &.ant-card {
+        margin: 24px 24px 16px;
+        .ant-card-body {
+          padding: 24px;
+        }
+      }
+    }
+  }
+  &-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+
+    .toolbar-left{
+      color: rgba(0,0,0,.85);
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    .toolbar-right {
+      svg {
+        cursor: pointer;
+      }
+      svg:hover {
+        color: #1890ff;
+      }
+    }
+  }
+}

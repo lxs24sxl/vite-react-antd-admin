@@ -1,31 +1,55 @@
-import React, { FC, memo, ReactElement, useCallback, useState } from 'react'
+import React, { FC, memo, ReactElement, useCallback, useMemo } from 'react'
 import { Layout } from 'antd'
+import { useDispatch, useSelector } from 'react-redux'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
-import ABreadcrumb from '@/components/bases/a-breadcrumb'
+// import ABreadcrumb from '@/components/bases/a-breadcrumb'
+import AWaterMark from '@/components/bases/a-water-mark'
+import { ConnectStateType } from '@/types/store'
+import { SetCollapsedAction } from '@/store/actions/common'
 
 import AMenus from '../a-menus'
 import HeaderRight from '../header-right'
-
 import './index.styl'
 
 export interface BasicLayoutProps {
   children?: ReactElement | ReactElement[]
-  title?: boolean
+  title?: string
 }
 
 const { Header, Sider, Content } = Layout
 
-const BasicLayout: FC<BasicLayoutProps> = props => {
-  const { title, children } = props
+/**
+ * 基础布局组件
+ * @param {ReactElement | ReactElement[]} children 插槽
+ * @param {string} title 标题
+ */
+const BasicLayout: FC<BasicLayoutProps> = memo(({ title, children }) => {
   // 是否缩放
-  const [collapsed, setCollapsed] = useState(false)
+  const collapsed = useSelector(
+    (state: ConnectStateType) => state.common.collapsed
+  )
+
+  const dispatch = useDispatch()
+
+  const userInfo = useSelector(
+    (state: ConnectStateType) => state.common.userInfo
+  )
+
+  const markContent = useMemo(() => {
+    const { managerName, name, mobile } = userInfo
+    const suffix = `${mobile || ''}`.length > 4 ? `${mobile.slice(-4)}` : ''
+    return `${managerName || name || '爱婴岛'}${suffix}`
+  }, [userInfo])
 
   /**
    * 收缩菜单事件
    */
-  const handleToggleEvent = useCallback(() => {
-    setCollapsed(!collapsed)
-  }, [collapsed])
+  const handleToggleEvent = useCallback(
+    value => {
+      dispatch(SetCollapsedAction(value))
+    },
+    [dispatch]
+  )
 
   return (
     <Layout className="basic-layout">
@@ -36,7 +60,7 @@ const BasicLayout: FC<BasicLayoutProps> = props => {
             className="title-logo"
             src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
           />
-          {!collapsed ? <h1>{title || '资源整合后台'}</h1> : null}
+          {!collapsed ? <h1>{title}</h1> : null}
         </div>
 
         <AMenus />
@@ -50,12 +74,12 @@ const BasicLayout: FC<BasicLayoutProps> = props => {
             {collapsed ? (
               <MenuUnfoldOutlined
                 className="header-left-icon"
-                onClick={handleToggleEvent}
+                onClick={() => handleToggleEvent(false)}
               />
             ) : (
               <MenuFoldOutlined
                 className="header-left-icon"
-                onClick={handleToggleEvent}
+                onClick={() => handleToggleEvent(true)}
               />
             )}
           </div>
@@ -63,20 +87,12 @@ const BasicLayout: FC<BasicLayoutProps> = props => {
             <HeaderRight />
           </div>
         </Header>
-        <Content
-          className="site-layout-background"
-          style={{
-            margin: '24px 16px',
-            padding: 24,
-            minHeight: 280
-          }}>
-          <ABreadcrumb />
-
-          {children}
-        </Content>
+        <AWaterMark content={markContent}>
+          <Content className="site-layout-content">{children}</Content>
+        </AWaterMark>
       </Layout>
     </Layout>
   )
-}
+})
 
-export default memo(BasicLayout)
+export default BasicLayout

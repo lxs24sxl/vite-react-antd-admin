@@ -16,6 +16,8 @@ import { randomNumber } from '@/utils'
 
 import styles from './index.module.less'
 
+const { VITE_APP_TITLE } = import.meta.env
+
 const layout = {
   labelCol: { span: 0 },
   wrapperCol: { span: 24 }
@@ -99,11 +101,11 @@ const Login: React.FC = () => {
                 className={styles.logo}
                 src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
               />
-              <span className={styles.title}>资源管理后台</span>
+              <span className={styles.title}>{VITE_APP_TITLE}</span>
             </Link>
           </div>
           <div className={styles.desc}>
-            欢迎来到资源管理后台，请选择登录方式
+            欢迎来到{VITE_APP_TITLE}，请填写登录信息
           </div>
         </section>
 
